@@ -1,22 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 final class Item
 {
-    public $name;
-    public $sell_in;
-    public $quality;
-
-    function __construct($name, $sell_in, $quality)
-    {
-        $this->name = $name;
-        $this->sell_in = $sell_in;
-        $this->quality = $quality;
-    }
+    public const AGED_BRIE = 'Aged Brie';
+    public const BACKSTAGE_PASS = 'Backstage passes to a TAFKAL80ETC concert';
+    public const SULFURAS_HAND_OF_RAGNAROS = 'Sulfuras, Hand of Ragnaros';
+    public const ELIXIR_OF_MONGOOSE = 'Elixir of the Mongoose';
+    
+    function __construct(public readonly string $name, public int $sell_in, public int $quality) {}
 
     public function __toString()
     {
-        return "{$this->name}, {$this->sell_in}, {$this->quality}";
+        return sprintf("{%s}, {%d}, {%d}", $this->name, $this->sell_in, $this->quality);
     }
 }
